@@ -3,6 +3,9 @@ import IconModal from './IconModal';
 import { Toparrow, Location, Close, Close2, Close3, Delete, Downarrow, Heart, Home, Leftarrow2, Lock, Menu, 
   Minus, Plus, Profile, RightArrow2, Search, Trash, Unlock, Uparrow } from 'suridev-icons'; // Adjust imports
 
+  import { Circle,Ellipse, Hexagon, Parallelogram, Pentagon, Rectangle, Square, Star, Trapezoid, Triangle } from 'suridev-icons';
+
+
 const icons = [
   { name: 'Toparrow', component: <Toparrow  /> },
   { name: 'Location', component: <Location /> },
@@ -23,7 +26,20 @@ const icons = [
   { name: 'Search', component: <Search /> },
   { name: 'Trash', component: <Trash /> },
   { name: 'Unlock', component: <Unlock /> },
-  { name: 'Uparrow', component: <Uparrow /> }
+  { name: 'Uparrow', component: <Uparrow /> },
+  { name: 'Circle', component: <Circle /> },
+  { name: 'Ellipse', component: <Ellipse /> },
+  { name: 'Hexagon', component: <Hexagon /> },
+  { name: 'Parallelogram', component: <Parallelogram /> },
+  { name: 'Pentagon', component: <Pentagon /> },
+  { name: 'Rectangle', component: <Rectangle /> },
+  { name: 'Square', component: <Square /> },
+  { name: 'Star', component: <Star /> },
+  { name: 'Trapezoid', component: <Trapezoid /> },
+  { name: 'Triangle', component: <Triangle /> },
+  
+
+
 ];
 
 const IconGrid = ({ searchTerm }) => {
