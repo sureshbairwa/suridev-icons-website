@@ -1,0 +1,22 @@
+/* App.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  scroll-padding-top: 4rem;
+}
+
+input {
+  outline: none;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+
+
+
+
+
+
