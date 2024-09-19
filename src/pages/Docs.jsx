@@ -7,13 +7,26 @@ import Example from './Example';
 import Example2 from './Example2';
 import copy from 'copy-to-clipboard'; 
 import "../App.css"
+import { useOutletContext } from 'react-router-dom'; 
+import IconGrid from '../components/IconGrid';
+
 
 const Docs = () => {
   const [copiedCode, setCopiedCode] = useState(null); 
+  const { searchTerm } = useOutletContext(); // Getting searchTerm from context
+
 
   useEffect(() => {
     Prism.highlightAll(); 
   }, [copiedCode]); 
+
+
+  useEffect(() => {
+    if (searchTerm) {
+      // Scroll to the top when searchTerm changes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [searchTerm]); 
 
   const handleCopy = (text, section) => {
     copy(text); 
@@ -22,6 +35,19 @@ const Docs = () => {
   };
 
   return (
+
+
+    <div className=''> 
+      <div className='mt-16'>
+
+        
+      {searchTerm ? (
+        <IconGrid searchTerm={searchTerm} />
+      ) : (
+        <p className='hidden'>Hello</p>
+      )}
+
+      </div>
     <div className="flex mt-16 bg-slate-50">
       <nav className="fixed w-64 p-4">
         <ul className="space-y-4">
@@ -44,7 +70,7 @@ const Docs = () => {
       </nav>
 
       {/* Documentation Content */}
-      <div className="ml-64 pl-8 w-full mr-40 sm:mr-5">
+      <div className="ml-64 pl-8 w-full mr-40 sm:mr-5 ">
         <section id="installation">
           <h1 className="text-2xl font-bold mb-4 mt-3">Suridev Icons Documentation</h1>
           <h2 className="text-xl font-semibold mb-2">Installation</h2>
@@ -180,6 +206,7 @@ export default Example2;`, 'customization')}
           </p>
         </section>
       </div>
+    </div>
     </div>
   );
 };

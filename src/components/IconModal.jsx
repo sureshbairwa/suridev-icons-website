@@ -34,7 +34,7 @@ const IconModal = ({ icon, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center"
+      className="fixed z-50 inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center"
       onClick={handleOverlayClick}
     >
       <div className="bg-white p-6 rounded-lg w-[500px] max-w-lg relative text-center">

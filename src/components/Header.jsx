@@ -6,12 +6,17 @@ import GitHub from '../assets/github-mark-white.svg';
 const Header = ({ searchTerm, setSearchTerm }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+
+  const handleLogoClick = () => {
+    setSearchTerm(''); // Clear search term
+  };
+
   return (
     <header className="bg-slate-600 text-white p-3 flex justify-between items-center fixed w-full z-50">
      
       <div className="flex items-center">
         <h1 className="text-2xl font-bold pl-10">
-          <Link to="/">Suridev Icons</Link>
+          <Link to="/" onClick={handleLogoClick}>Suridev Icons</Link>
         </h1>
       </div>
 
@@ -35,11 +40,14 @@ const Header = ({ searchTerm, setSearchTerm }) => {
       </div>
 
       <div className="hidden lg:flex items-center space-x-4">
-        <Link to="/" className="text-lg font-semibold cursor-pointer hover:underline">
+        <Link to="/" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick} >
           Icons
         </Link>
-        <Link to="/docs" className="text-lg font-semibold cursor-pointer hover:underline">
+        <Link to="/docs" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick}>
           Docs
+        </Link>
+        <Link to="/playground" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick}>
+          Playground
         </Link>
         <a href="https://github.com/sureshbairwa/suridev-icons" className="text-lg font-semibold cursor-pointer hover:underline">
           
@@ -54,6 +62,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
             to="/"
             className="text-lg font-semibold cursor-pointer hover:underline"
             onClick={() => setMenuOpen(false)} 
+            
           >
             Icons
           </Link>
@@ -63,6 +72,13 @@ const Header = ({ searchTerm, setSearchTerm }) => {
             onClick={() => setMenuOpen(false)} 
           >
             Docs
+          </Link>
+          <Link
+            to="/playground"
+            className="text-lg font-semibold cursor-pointer hover:underline"
+            onClick={() => setMenuOpen(false)} 
+          >
+            Playground
           </Link>
           <a
             href="https://github.com/sureshbairwa/suridev-icons"

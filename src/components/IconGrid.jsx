@@ -5,13 +5,10 @@ import { Toparrow, Location, Close, Close2, Close3, Delete, Downarrow, Heart, Ho
 
   import { Circle,Ellipse, Hexagon, Parallelogram, Pentagon, Rectangle, Square, Star, Trapezoid, Triangle } from 'suridev-icons';
 
+  import { Triangle4 } from 'suridev-icons';
 
 const icons = [
-  { name: 'Toparrow', component: <Toparrow  /> },
-  { name: 'Location', component: <Location /> },
   { name: 'Close', component: <Close /> },
-  { name: 'Close2', component: <Close2 /> },
-  { name: 'Close3', component: <Close3 /> },
   { name: 'Delete', component: <Delete /> },
   { name: 'Downarrow', component: <Downarrow /> },
   { name: 'Heart', component: <Heart /> },
@@ -20,6 +17,7 @@ const icons = [
   { name: 'Lock', component: <Lock /> },
   { name: 'Menu', component: <Menu /> },
   { name: 'Minus', component: <Minus /> },
+  { name: 'Close2', component: <Close2 /> },
   { name: 'Plus', component: <Plus /> },
   { name: 'Profile', component: <Profile /> },
   { name: 'RightArrow2', component: <RightArrow2 /> },
@@ -28,6 +26,7 @@ const icons = [
   { name: 'Unlock', component: <Unlock /> },
   { name: 'Uparrow', component: <Uparrow /> },
   { name: 'Circle', component: <Circle /> },
+  { name: 'Close3', component: <Close3 /> },
   { name: 'Ellipse', component: <Ellipse /> },
   { name: 'Hexagon', component: <Hexagon /> },
   { name: 'Parallelogram', component: <Parallelogram /> },
@@ -37,7 +36,6 @@ const icons = [
   { name: 'Star', component: <Star /> },
   { name: 'Trapezoid', component: <Trapezoid /> },
   { name: 'Triangle', component: <Triangle /> },
-  
 
 
 ];
