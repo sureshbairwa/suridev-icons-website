@@ -48,33 +48,35 @@ const Docs = () => {
       )}
 
       </div>
-    <div className="flex mt-16 bg-slate-50">
-      <nav className="fixed w-64 p-4">
-        <ul className="space-y-4">
+    <div className="flex mt-16 bg-black">
+      <div className='pr-7 '>
+      <nav className="fixed w-72   p-2 h-[670px]   bg-slate-300 sm:h-full md:h-full ">
+        <ul className="space-y-4 ">
           <li>
-            <a href="#installation" className="text-blue-500 hover:underline">Installation</a>
+            <a href="#installation" className="text-black text-base font-bold hover:underline hover:text-blue-700">Installation</a>
           </li>
           <li>
-            <a href="#import-statement" className="text-blue-500 hover:underline">Import Statement</a>
+            <a href="#import-statement" className="text-black text-base font-bold hover:underline hover:text-blue-700">Import Statement</a>
           </li>
           <li>
-            <a href="#usage" className="text-blue-500 hover:underline">Usage</a>
+            <a href="#usage" className="text-black text-base font-bold hover:underline hover:text-blue-700">Usage</a>
           </li>
           <li>
-            <a href="#customization" className="text-blue-500 hover:underline">Customization</a>
+            <a href="#customization" className="text-black text-base font-bold hover:underline hover:text-blue-700">Customization</a>
           </li>
           <li>
-            <a href="#license" className="text-blue-500 hover:underline">License</a>
+            <a href="#license" className="text-black text-base font-bold hover:underline hover:text-blue-700">License</a>
           </li>
         </ul>
       </nav>
+      </div>
 
       {/* Documentation Content */}
-      <div className="ml-64 pl-8 w-full mr-40 sm:mr-5 ">
+      <div className="ml-64 pl-8 w-full mr-40 sm:mr-5 bg-black">
         <section id="installation">
           <h1 className="text-2xl font-bold mb-4 mt-3">Suridev Icons Documentation</h1>
           <h2 className="text-xl font-semibold mb-2">Installation</h2>
-          <p >To install the <code className="font-bold" title="click to copy to clipboard">suridev-icons</code> package use npm.</p>
+          <p >To install the <code className="font-bold text-blue-500" title="click to copy to clipboard">suridev-icons</code> package use npm.</p>
 
           <h3 className="text-lg font-semibold mt-4 mb-2">Using npm:</h3>
           <span className="relative group">
@@ -155,7 +157,7 @@ export default Example;`, 'usage')}
               </span>
             </span> 
 
-          <div className="mt-5 bg-white">
+          <div className="mt-5 bg-black ">
             <p className="font-medium text-xl mb-3">Result</p>
             <Example />
           </div>
@@ -193,7 +195,7 @@ export default Example2;`, 'customization')}
               </span>
             </span> 
 
-          <div className="mt-5 bg-white mb-3">
+          <div className="mt-5 bg-black mb-3">
             <p className="font-medium text-xl mb-3">Result</p>
             <Example2 />
           </div>

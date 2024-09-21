@@ -7,14 +7,13 @@ const Home = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      // Scroll to the top when searchTerm changes
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [searchTerm]); 
 
   return (
     
-      <div className='mt-14 bg-slate-50'>
+      <div className='mt-14 bg-black'>
         <IconGrid searchTerm={searchTerm} className="" />
       </div>
     

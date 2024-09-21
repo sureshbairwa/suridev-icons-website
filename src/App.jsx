@@ -10,7 +10,7 @@ function App() {
     <div className="min-h-screen flex flex-col">
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> 
 
-      <main className="flex-grow">
+      <main className="flex-grow bg-black text-white">
         <Outlet context={{ searchTerm }} /> 
       </main>
 

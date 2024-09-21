@@ -7,12 +7,16 @@ const Header = ({ searchTerm, setSearchTerm }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
 
+
+
+
   const handleLogoClick = () => {
     setSearchTerm(''); // Clear search term
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <header className="bg-slate-600 text-white p-3 flex justify-between items-center fixed w-full z-50">
+    <header className="bg-slate-500 text-white p-3 flex justify-between items-center fixed w-full z-50">
      
       <div className="flex items-center">
         <h1 className="text-2xl font-bold pl-10">

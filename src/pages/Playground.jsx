@@ -13,7 +13,7 @@ const Playground = () => {
 
   // State for icon properties
   const [size, setSize] = useState(50);
-  const [stroke, setStroke] = useState('black');
+  const [stroke, setStroke] = useState('white');
   const [strokeWidth, setStrokeWidth] = useState(3);
   const [fill, setFill] = useState('none');
   const [opacity, setOpacity] = useState(1);
@@ -46,6 +46,15 @@ const Playground = () => {
   };
 
   const SelectedIconComponent = icons[selectedIcon];
+  const [darkMode, setDarkMode] = useState(true);
+
+  const handleMode = () => {
+    setDarkMode(!darkMode);
+    if(stroke=="black" || stroke=="white"){
+      setStroke(darkMode ? "black" : "white");
+    }
+    
+  };
 
   return (
 
@@ -61,19 +70,19 @@ const Playground = () => {
 
       </div>
     
-    <div className='container mx-auto mt-16 flex flex-wrap bg-slate-50'>
+    <div className='container mx-auto mt-16 flex flex-wrap bg-black'>
 
 
       
       
     
       {/* Left side for icon display */}
-      <div className='flex flex-col bg-white rounded-lg p-3 mt-10' style={{ width: '600px', height: '500px' }}>
+      <div className={`flex flex-col  rounded-lg p-3 mt-10 relative`}  style={{ width: '600px', height: '500px' }}>
         <div className='flex items-center justify-center'>
           <select
             value={selectedIcon}
             onChange={handleIconChange}
-            className='border border-gray-500 w-1/2 h-8 text-lg mb-3'
+            className='border border-gray-500 w-1/2 h-8 text-lg mb-3 text-black'
           >
             {Object.keys(icons).map((icon) => (
               <option key={icon} value={icon}>
@@ -82,7 +91,12 @@ const Playground = () => {
             ))}
           </select>
         </div>
-        <div className='border border-grey-200 w-full h-full flex items-center justify-center shadow-lg rounded-xl border-black'>
+        <div>
+          <button className={` ${darkMode ? 'bg-white' : 'bg-black'} absolute top-[60px] left-4 text-black rounded-lg w-10 h-8`} onClick={handleMode} >
+          
+          </button>
+        </div>
+        <div className={`border border-purple-500 ${darkMode ? 'bg-black' : 'bg-white'} transition-colors duration-300  w-full h-full flex items-center justify-center shadow-lg rounded-xl `}>
           <SelectedIconComponent
             height={size}
             width={size}
@@ -90,17 +104,18 @@ const Playground = () => {
             strokeWidth={strokeWidth}
             fill={fill}
             opacity={opacity}
+           
           />
         </div>
       </div>
 
       {/* Right side for sliders and controls */}
-      <div className='flex-1 p-8 bg-slate-50  rounded-lg m-4'>
-        <h2 className='text-2xl font-bold text-gray-800 mb-6'>Customize Icon</h2>
+      <div className='flex-1 p-8 bg-black text-white  rounded-lg m-4'>
+        <h2 className='text-2xl font-bold  mb-6'>Customize Icon</h2>
 
         {/* Size Control */}
         <div className='mb-6'>
-          <label className='block text-gray-700 font-semibold mb-2'>Size: {size}px</label>
+          <label className='block  font-semibold mb-2'>Size: {size}px</label>
           <input
             type='range'
             min='10'
@@ -113,18 +128,18 @@ const Playground = () => {
 
         {/* Stroke Color Control */}
         <div className='mb-6'>
-          <label className='block text-gray-700 font-semibold mb-2'>Stroke Color:</label>
+          <label className='block  font-semibold mb-2'>Stroke Color:</label>
           <input
             type='color'
             value={stroke}
             onChange={handleStrokeChange}
-            className='w-14 h-10 border rounded-lg focus:ring-blue-500 focus:border-blue-500'
+            className='w-14 h-10 border rounded-lg  cursor-pointer'
           />
         </div>
 
         {/* Stroke Width Control */}
         <div className='mb-6'>
-          <label className='block text-gray-700 font-semibold mb-2'>Stroke Width: {strokeWidth}px</label>
+          <label className='block  font-semibold mb-2'>Stroke Width: {strokeWidth}px</label>
           <input
             type='range'
             min='0'
@@ -137,19 +152,19 @@ const Playground = () => {
         </div>
 
         {/* Fill Color Control */}
-        <div className='mb-6'>
-          <label className='block text-gray-700 font-semibold mb-2'>Fill Color:</label>
+        <div className='mb-6 '>
+          <label className='block  font-semibold mb-2'>Fill Color:</label>
           <input
             type='color'
             value={fill}
             onChange={handleFillChange}
-            className='w-14 h-10 border rounded-lg focus:ring-blue-500 focus:border-blue-500'
+            className='w-14 h-10 border rounded-lg focus:ring-green-900 focus:border-purple-500 cursor-pointer'
           />
         </div>
 
         {/* Opacity Control */}
         <div className='mb-6'>
-          <label className='block text-gray-700 font-semibold mb-2'>Opacity: {opacity}</label>
+          <label className='block  font-semibold mb-2'>Opacity: {opacity}</label>
           <input
             type='range'
             min='0'

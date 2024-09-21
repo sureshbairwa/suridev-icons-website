@@ -3,9 +3,9 @@ import { Lock,Menu } from 'suridev-icons';
 
 const Example = () => {
   return (
-    <div className='flex' >
-      <Lock/>
-      <Menu/>
+    <div className='flex ' >
+      <Lock stroke="white"/>
+      <Menu stroke="white"/>
     </div>
   );
 };
