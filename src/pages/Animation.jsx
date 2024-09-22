@@ -5,13 +5,16 @@ import 'prismjs/themes/prism-tomorrow.css';
 import { Lock, Star, Close, Circle, Square } from 'suridev-icons';
 import { useOutletContext } from 'react-router-dom'; 
 import IconGrid from '../components/IconGrid';
+import { useLocation } from 'react-router-dom'; 
+import { IconAnimation } from 'suridev-icons';
 
 
-const Playground = () => {
+const Animation = () => {
 
 
 
-  // State for icon properties
+  const { state } = useLocation();
+
   const [size, setSize] = useState(50);
   const [stroke, setStroke] = useState('white');
   const [strokeWidth, setStrokeWidth] = useState(3);
@@ -20,6 +23,8 @@ const Playground = () => {
   const [showCode, setShowCode] = useState(true);
   const [selectedIcon, setSelectedIcon] = useState('Lock');
   const { searchTerm } = useOutletContext();
+  const [selectedAnimation, setSelectedAnimation] = useState(state?.selectedAnimation || ''); 
+
 
 
   useEffect(() => {
@@ -30,7 +35,7 @@ const Playground = () => {
 
   useEffect(() => {
     Prism.highlightAll();
-  }, [size, stroke, strokeWidth, fill, opacity,selectedIcon]);
+  }, [size, stroke, strokeWidth, fill, opacity,selectedIcon,selectedAnimation]);
 
   const handleSizeChange = (e) => setSize(e.target.value);
   const handleStrokeChange = (e) => setStroke(e.target.value);
@@ -56,9 +61,29 @@ const Playground = () => {
     
   };
 
+
+  const [expandedCategories, setExpandedCategories] = useState({}); 
+
+  const animationCategories = {
+    
+    Color: ['ia-sc','ia-sc1','ia-sc2','ia-sc3','ia-sc4','ia-sc5'],
+    Dash: ['ia-sd','ia-sd1','ia-sd2','ia-sd3','ia-sd4','ia-sd5','ia-sd6','ia-sd7','ia-sd8','ia-sd9','ia-sd10',],
+    Width: ['ia-sw','ia-sw1','ia-sw2','ia-sw3','ia-sw4','ia-sw5'],
+    Opacity: ['ia-so','ia-so1','ia-so2','ia-so3','ia-so4','ia-so5']
+  };
+
+  const toggleCategory = (category) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category], 
+    }));
+  };
+
+  IconAnimation();
+
   return (
 
-    <div className=''> 
+    <div className='bg-black text-white'> 
       <div className='mt-16'>
 
         
@@ -69,14 +94,59 @@ const Playground = () => {
       )}
 
       </div>
+
+
+     <div  className='mt-16 relative'>
+
+      <div className='flex'>
+
+      
+
+     <div className="w-80 bg-gray-800  flex-shrink-0 h-[671px] overflow-y-auto">
+        <h2 className="text-xl font-semibold mb-6">Animation Classes</h2>
+
+        {Object.keys(animationCategories).map((category) => (
+          <div key={category} className="mb-4 bg-gray-600 py-1 px-2 rounded-lg">
+            <h3
+              className="text-lg font-bold mb-2 cursor-pointer"
+              onClick={() => toggleCategory(category)}
+            >
+              {category}
+            </h3>
+            {expandedCategories[category] && ( 
+              <ul>
+                {animationCategories[category].map((animation) => (
+                  <li
+                    key={animation}
+                    className={`cursor-pointer mb-2 py-2 px-7 rounded ${
+                      selectedAnimation === animation
+                        ? 'bg-gray-200 text-black text-base'
+                        : 'hover:bg-black text-white'
+                    }`}
+                    onClick={() => {
+                      setSelectedAnimation(animation);
+                      document.getElementById(animation)?.scrollIntoView({ behavior: 'smooth',block:'start' });
+                    }}
+                  >
+                    {animation}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div> 
+      
     
-    <div className='container mx-auto mt-16 flex flex-wrap bg-black'>
+    <div className='container mx-auto  flex flex-wrap bg-black  '>
 
 
       
       
     
       {/* Left side for icon display */}
+
+
       <div className={`flex flex-col  rounded-lg p-3 mt-10 relative`}  style={{ width: '600px', height: '500px' }}>
         <div className='flex items-center justify-center'>
           <select
@@ -96,7 +166,7 @@ const Playground = () => {
           
           </button>
         </div>
-        <div className={`border border-purple-500 ${darkMode ? 'bg-black' : 'bg-white'} transition-colors duration-300  w-full h-full flex items-center justify-center shadow-lg rounded-xl `}>
+        <div className={`border border-purple-500 ${darkMode ? 'bg-black' : 'bg-white'} transition-colors duration-300  w-full h-full flex items-center justify-center shadow-lg rounded-xl  `}>
           <SelectedIconComponent
             height={size}
             width={size}
@@ -104,13 +174,14 @@ const Playground = () => {
             strokeWidth={strokeWidth}
             fill={fill}
             opacity={opacity}
+            className={selectedAnimation}
            
           />
         </div>
       </div>
 
       {/* Right side for sliders and controls */}
-      <div className='flex-1 p-8 bg-black text-white  rounded-lg m-4'>
+      <div className='flex-1 p-8 bg-black text-white  rounded-lg m-2  '>
         <h2 className='text-2xl font-bold  mb-6'>Customize Icon</h2>
 
         {/* Size Control */}
@@ -176,19 +247,23 @@ const Playground = () => {
           />
         </div>
 
-        {/* Display generated component code */}
-        {showCode && (
-          <div className=''>
-            <code className='block text-sm text-gray-700 language-jsx'>
-              {`<${selectedIcon} height="${size}" width="${size}" stroke="${stroke}" strokeWidth="${strokeWidth}" fill="${fill}" opacity="${opacity}" />`}
+        
+      </div>
+      </div>
+      
+      
+    </div>
+    {showCode && (
+          <div className='absolute top-[85%] left-[22%] w-[80%]'>
+            <code className='block text-sm text-gray-700 language-jsx w-2/3  '>
+              {`<${selectedIcon} height="${size}" width="${size}" stroke="${stroke}" strokeWidth="${strokeWidth}" fill="${fill}" opacity="${opacity}" className="${selectedAnimation}" />`}
             </code>
           </div>
         )}
-      </div>
-      
-    </div>
+    
+    </div> 
     </div>
   );
 };
 
-export default Playground;
+export default Animation;

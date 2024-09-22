@@ -38,12 +38,16 @@ const IconModal = ({ icon, onClose, styles }) => {
     >
       <div className="bg-slate-500  p-6 rounded-lg w-[500px] max-w-lg relative text-center">
         <button className="absolute top-4 right-4 text-gray-700" onClick={onClose}>
-          <Close />
+          <Close className="hover:stroke-white "/>
         </button>
 
-        <div className="flex items-center justify-center w-32 h-32 mx-auto mb-2 bg-slate-500 hover:bg-white rounded-xl">
-          {React.createElement(icon.component,{height:"90" , width:"90", className:""})}
-        </div>
+        <div className="group flex items-center justify-center w-32 h-32 mx-auto mb-2 bg-slate-500 hover:bg-gray-900 rounded-xl transition-all duration-500 ease-in-out">
+      {React.createElement(icon.component, {
+        height: "90",
+        width: "90",
+        className: "stroke-black  group-hover:stroke-white "
+      })}
+    </div>
 
         <h2 className="text-xl mb-4">{icon.name}</h2>
 

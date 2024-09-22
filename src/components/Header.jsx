@@ -26,7 +26,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
 
      
       <div className="flex items-center bg-white rounded-md px-2 py-1 w-80 sm:w-96 md:w-96 lg:w-1/3 lg:hover:w-1/2 duration-300 ease-in-out">
-        <Search className="text-gray-600 mr-2" /> 
+        <Search className="text-gray-600 mr-2 stroke-1to3" /> 
         <input
           type="text"
           placeholder="Search icons..."
@@ -50,8 +50,9 @@ const Header = ({ searchTerm, setSearchTerm }) => {
         <Link to="/docs" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick}>
           Docs
         </Link>
-        <Link to="/playground" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick}>
-          Playground
+
+        <Link to="/animation" className="text-lg font-semibold cursor-pointer hover:underline" onClick={handleLogoClick}>
+          Animation
         </Link>
         <a href="https://github.com/sureshbairwa/suridev-icons" className="text-lg font-semibold cursor-pointer hover:underline">
           
@@ -78,11 +79,11 @@ const Header = ({ searchTerm, setSearchTerm }) => {
             Docs
           </Link>
           <Link
-            to="/playground"
+            to="/animation"
             className="text-lg font-semibold cursor-pointer hover:underline"
             onClick={() => setMenuOpen(false)} 
           >
-            Playground
+            Animation
           </Link>
           <a
             href="https://github.com/sureshbairwa/suridev-icons"
